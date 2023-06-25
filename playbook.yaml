@@ -1,0 +1,17 @@
+---
+- hosts: all
+  become: yes
+  remote_user: root
+  vars: 
+    - VAR_OUT: 
+        - AB
+        - BC
+        - DE
+        - ED 
+        - FG
+        - GF
+  tasks: 
+    - name: printing message ...
+      debug: var="{{ item }}"
+      with_items: 
+        - "{{ VAR_OUT }}"
